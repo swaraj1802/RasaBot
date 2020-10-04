@@ -20,7 +20,6 @@
 - that sounds good
 - yeah
 - confirm
-- indeed
 - correct
 - yup
 - yes please
@@ -87,7 +86,7 @@
 - ok
 - confirm
 
-## intent: FAQ_Check_in
+## intent:FAQ_Check_in
 - What are your check-in timings?
 - When can I check-in?
 - when will you open?
@@ -96,7 +95,7 @@
 - what is the check in time?
 - when can i check into my room
 
-## intent: FAQ_Check_out
+## intent:FAQ_Check_out
 - What are your check-out timings?
 - when can i leave?
 - at what time should i check out?
@@ -105,23 +104,23 @@
 - I want to check-out
 - When can I check-out?
 
-## intent: FAQ_cancel_reservation
+## intent:FAQ_cancel_reservation
 - How do I cancel a reservation?
 - I want to cancel my reservation
 - I dont want the reservation anymore
 - Can you please cancel my reservation?
 - From where can I cancel my reservation?
 - I want to cancel my booking
-- I want to cancel my reservation
 
-## intent: FAQ_cancellation_policy
+## intent:FAQ_cancellation_policy
 - What is your cancellation policy?
 - What are the terms for cancellation?
 - Can you state your cancellation policy?
 - Till when can i cancel my reservation?
 - What are your terms and condition for cancellation?
+- I want to cancel the room what are the policies ?
 
-## intent: FAQ_restaurant
+## intent:FAQ_restaurant
 - Does the hotel have a restaurant?
 - Does it have a restaurant?
 - Can i get a restaurant over there?
@@ -130,7 +129,7 @@
 - is restaurant available?
 - do you have a restaurant?
 
-## intent: FAQ_breakfast_availability
+## intent:FAQ_breakfast_availability
 - Does the hotel offer breakfast?
 - will we get breakfast?
 - The breakfast would be available, right?
@@ -139,7 +138,7 @@
 - do you offer breakfast
 - is breakfast available?
 
-## intent: FAQ_breakfast_timings
+## intent:FAQ_breakfast_timings
 - What are the breakfast timings?
 - When will the breakfast be served?
 - From when can I order the breakfast?
@@ -147,15 +146,19 @@
 - At what time can we get breakfast?
 - when can i have the breakfast
 - when will we get breakfast
+- When is breakfast served ?
+- What is the timing for serving the breakfast
+- When can I have breakfast
+- What are the breakfast timings ?
 
-## intent: FAQ_restaurant_timings
+## intent:FAQ_restaurant_timings
 - What are the restaurant timings?
 - What are the timings of your restaurant?
 - When can we go to the restaurant?
 - From when can I visit the restaurant?
 - Till when can I visit the restaurant?
 
-## intent: book_room
+## intent:book_room
 - I would like to book rooms
 - Confirm my bookings
 - reserve seven rooms for me
@@ -170,7 +173,7 @@
 - I want to book a room for 2 people
 - I want to book a room for six people
 
-## intent: inform
+## intent:inform
 - [Simple](type_of_rooms)
 - [Deluxe](type_of_rooms)
 - 10
@@ -190,11 +193,10 @@
 - at 5 pm today
 - tomorrow morning
 - at 6 am
-- after two hours
 - right now
 - now
 
-## intent: clean_room
+## intent:clean_room
 - I want to have my room cleaned
 - Can you please clean my room
 - Schedule a room cleaning
