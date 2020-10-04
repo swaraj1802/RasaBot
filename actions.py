@@ -4,24 +4,30 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
 
+from typing import Dict, Text, Any, List, Union, Optional
+import logging
+from rasa_sdk import Tracker, Action
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.forms import FormAction, REQUESTED_SLOT
+from rasa_sdk.events import SlotSet, EventType
+from parsing import (
+    parse_duckling_time_as_interval,
+    parse_duckling_time,
+    get_entity_details,
+)
 
-# This is a simple example for a custom action which utters "Hello World!"
+logger = logging.getLogger(__name__)
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+class ActionFaqs(Action):
+    """Returns the chitchat utterance dependent on the intent"""
+
+    def name(self):
+        return "action_faqs"
+
+    def run(self, dispatcher, tracker, domain):
+        intent = tracker.latest_message["intent"].get("name")
+        print(tracker.latest_message)
+        
+        if "FAQ" in intent:
+            dispatcher.utter_message(template = f"utter_"+ intent)
+        return []
