@@ -1,59 +1,32 @@
-session_config:
-  session_expiration_time: 0
-  carry_over_slots_to_new_session: true
 intents:
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- chitchat
-- thank_you
-- FAQ_Check_in
-- FAQ_Check_out
-- FAQ_cancel_reservation
-- FAQ_cancellation_policy
-- FAQ_restaurant
-- FAQ_breakfast_availability
-- FAQ_breakfast_timings
-- FAQ_restaurant_timings
-- book_room:
-    use_entities: []
-- inform:
-    use_entities: []
-- clean_room:
-    use_entities: []
-entities:
-- number
-- no_of_rooms
-- type_of_rooms
-- time
-slots:
-  grain:
-    type: unfeaturized
-  no_of_rooms:
-    type: unfeaturized
-  requested_slot:
-    type: unfeaturized
-  time:
-    type: unfeaturized
-  type_of_rooms:
-    type: unfeaturized
-actions:
-- action_faqs
-- utter_welcome
-- utter_happy
-- utter_did_that_help
-- utter_wellwish
-- utter_feelings
-- utter_iamabot
-- utter_goodbye
-- utter_ask_continue
-- utter_ask_continue2
-- utter_cheer_up
-- utter_greet
-forms:
-- book_room_form
-- clean_room_form
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
