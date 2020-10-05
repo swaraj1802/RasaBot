@@ -1,34 +1,114 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- FAQ_1
+- FAQ_2
+- FAQ_3
+- FAQ_4
+- FAQ_5
+- FAQ_6
+- FAQ_8
+- FAQ_7
+- FAQ_9
+- Not_relavant
+- FAQ_11
+- FAQ_10
+entities:
+- instance
+- deployment
+- docker
+- service
+- debug
+- prob
+- services
+- access
+- connectivity
+- coast
+- subject
+- instances
+- harbor
+slots:
+  deployment:
+    type: categorical
+    values:
+    - rock
+    - ec2
+  docker:
+    type: categorical
+    values:
+    - container
+    - docker container
+    - docker instance
+  instance:
+    type: categorical
+    values:
+    - ec2
+  prob:
+    type: categorical
+    values:
+    - access
+    - accessing
+    - connectivity
+    - connect
+    - connection
+    - reach
+    - connect to
+    - restarting
+    - check connectivity
+    - crashed
+    - crash
+    - pprof
+responses:
+  utter_FAQ_1:
+  - text: "Steps: \nVPC which you are trying to access should be peered with rock.\n\
+      Security group should have Inbound rules pointing to Rock CIDR ranges.\nDns\
+      \ / IP you are trying to connect should be part of private subnet or open to\
+      \ public"
+  utter_FAQ_2:
+  - text: "RoCK have rolling update (25% at a time) deployment strategy.\nSo, older\
+      \ instances might be visible for some time."
+  utter_FAQ_3:
+  - text: "Steps:\nCheck service status whether it crashing/restarting.\nCheck app\
+      \ port mentioned in service template is correct.\nCheck healthPort / healthUrl\
+      \ mentioned in service template is correct.\nCheck in Grafana whether your application\
+      \ is asking for more memory than mentioned in service template (OOM\ncrashed).\n\
+      Check service logs for errors."
+  utter_FAQ_4:
+  - text: "Steps:\nCheck coast reset command. \n(eg. - coast reset svc -s <svc_name>\
+      \ -e <environment> )\nIt will do a rolling restart. Keep in mind environment\
+      \ variables will not be be fetched again.\n2. Deploying a new version of service\
+      \ will always do a rolling restart."
+  utter_FAQ_5:
+  - text: "You can access “hello“ application.\n(https://hello.<env>.<region>.<tenant>/)\n\
+      For Eg:\nhttp://hello.staging.singapore.swig.gy/\nOpen “hello“ app url in browser\
+      \ and you see endpoints for doing curl, nslookup , telnet  etc.\nIf “hello“\
+      \ app is not running in a particular environment then you can deploy it yourself\
+      \ for.\n(check coast-cli docs.)"
+  utter_FAQ_6:
+  - text: https://swiggy.atlassian.net/wiki/spaces/ROCK/pages/1537409065/Getting%2Bcrash%2Blogs%2BEvents%2Bfrom%2Ban%2Binstance
+  utter_FAQ_7:
+  - text: https://swiggy.atlassian.net/wiki/spaces/ROCK/pages/1431080341
+  utter_FAQ_8:
+  - text: https://swiggy.atlassian.net/wiki/spaces/ROCK/pages/1683849386/How+to+login+to+service+container
+  utter_FAQ_9:
+  - text: https://swiggy.atlassian.net/wiki/spaces/ROCK/pages/1691779075/How+to+access+files+created+with+debug+svc+command
+  utter_FAQ_10:
+  - text: https://swiggy.atlassian.net/wiki/spaces/ROCK/pages/1625981278
+  utter_login:
+  - buttons:
+    - payload: /FAQ_8{"prob":"login","docker":"container"}
+      title: Container
+    - payload: /utter_fallback
+      title: Something else
+    text: Did you mean ?
+  utter_service:
+  - buttons:
+    - payload: /FAQ_3{"prob":"access","services":"service"}
+      title: Not able to access service deployed on RoCK
+    - payload: /utter_fallback
+      title: Something else
+    text: Did you mean ?
+actions:
+- action_faqs
+- utter_fallback
