@@ -1,47 +1,34 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-intents:
-- FAQ_1
-- FAQ_2
-- FAQ_3
-- FAQ_4
-- FAQ_5
-- FAQ_6
-- Not relavant
-entities:
-- instance
-- deployment
-- docker
-- service
-- debug
-- prob
-- services
-responses:
-  utter_FAQ_1:
-  - text: 'Steps: \n VPC which you are trying to access should be peered with rock.
-      \n Security group should have Inbound rules pointing to Rock CIDR ranges. \n
-      Dns / IP you are trying to connect should be part of private subnet or open
-      to public'
-  utter_FAQ_2:
-  - text: RoCK have rolling update (25% at a time) deployment strategy. \n So, older
-      instances might be visible for some time.
-  utter_FAQ_3:
-  - text: 'Steps: \n Check service status whether it crashing/restarting. \n Check
-      app port mentioned in service template is correct. \n Check healthPort / healthUrl
-      mentioned in service template is correct. \n Check in Grafana whether your application
-      is asking for more memory than mentioned in service template (OOM crashed).
-      \n Check service logs for errors.'
-  utter_FAQ_4:
-  - text: 'Steps: \n Check coast reset command. (eg. - coast reset svc -s <svc_name>
-      -e <environment> ) \n It will do a rolling restart. Keep in mind environment
-      variables will not be be fetched again. \n 2. Deploying a new version of service
-      will always do a rolling restart.'
-  utter_FAQ_5:
-  - text: Hey! I am Zozo5. How may I help you?
-  utter_FAQ_6:
-  - text: Hey! I am Zozo6. How may I help you?
-  utter_fallback:
-  - text: Don't know
-actions:
-- action_faqs
